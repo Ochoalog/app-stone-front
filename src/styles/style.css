@@ -1,0 +1,29 @@
+.header {
+  padding-top: 25px;
+}
+
+.topPage {
+  margin-top: 70px;
+}
+
+.form-floating:focus-within {
+  z-index: 2;
+}
+
+#danger {
+  background-color: rgb(255, 87, 87);
+  border-radius: 4px;
+  padding: 2px 2px 3px 3px;
+}
+
+#warning {
+  background-color: yellow;
+  border-radius: 4px;
+  padding: 2px 2px 3px 3px;
+}
+
+#success {
+  background-color: rgb(0, 255, 0);
+  border-radius: 4px;
+  padding: 2px 2px 3px 3px;
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Store</title>
+  <link rel="stylesheet" type="text/css" href="/src/styles/style.css">  
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img src="/src/images/stone-logo-reduzida.png" width="30" height="30"></a>
+    <div class="collapse navbar-collapse" id="navbarCollapse" style="display: flex;">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.html">AppStore</a>
+        </li>
+      </ul>
+      <ul id="statusLogin" class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div class="modal fade" id="modal" data-toggle="validator" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="title">Comprar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h2>Cartão de crédito</h2>
+        <div class="form-floating">
+          <input class="form-control" id='name' type="text" maxlength="150" required>
+          <label for="name">Nome (Opcional)<span class="required-mark">*</span></label>
+          <div class="help-block with-errors"></div>
+        </div>
+        <div class="form-floating">
+          <input class="form-control" id='number' type="text" maxlength="11" required>
+          <label for="number">Número</label>
+        </div>
+        <div class="form-floating">
+          <input class="form-control" id='validateDate' type="date" required>
+          <label for="validateDate">Data de validade<span class="required-mark">*</span></label>
+        </div>
+        <div class="form-floating">
+          <input class="form-control" id='cvv' type="text" required>
+          <label for="cvv">CVV</label>
+        </div>
+        <div class="form-floating">
+          <input class="form-control" id='company' type="text" required>
+          <label for="company">Empresa</label>
+        </div>
+      <hr>
+      <h3>Resumo</h3>
+      <div class="form-floating">
+        <input readonly class="form-control" id='app' type="text" required>
+        <label for="app">App</label>
+      </div>
+      <div class="form-floating">
+        <input readonly class="form-control" id='creator' type="text" required>
+        <label for="creator">Criador</label>
+      </div>
+      <div class="form-floating">
+        <input readonly class="form-control" id='value' type="text" required>
+        <label for="value">Preço</label>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-success" id='btnSave' onclick=buyApp() data-bs-dismiss="modal">Comprar!</button>
+      <button class="btn btn-secondary" id='btnCancel' data-bs-dismiss="modal" onclick=cancel()>Cancelar</button>
+    </div>
+    </div>      
+    </div>
+  </div>
+</div>
+
+  <div class="container topPage">
+    <input id="search" class="form-control form-control-dark w-100 mb-2" type="text" placeholder="Search" aria-label="Search">
+    <table id="tab" class="table table-striped" border='1'>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Preço</th>
+          <th>Criador</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+<script>
+  document.getElementById('search').addEventListener("keyup", function () {
+    var colum = '0'
+    var filter, table, tr, td, th, i;
+
+    filter = document.getElementById('search');
+    filter = filter.value.toUpperCase();
+
+    table = document.getElementById('tab')
+
+    tr = table.getElementsByTagName('tr');
+    th = table.getElementsByTagName('th');
+
+    for(i = 0; i < tr.length; i++){
+      td = tr[i].getElementsByTagName('td')[colum];
+      if(td) {
+        if(td.innerHTML.toUpperCase().indexOf(filter) > -1){
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  });
+</script>
+<script type="text/javascript" src="/scripts/app.js"></script>
+</body>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.js"
+integrity="sha512-K3MtzSFJk6kgiFxCXXQKH6BbyBrTkTDf7E6kFh3xBZ2QNMtb6cU/RstENgQkdSLkAZeH/zAtzkxJOTTd8BqpHQ=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/src/js/validator.js"></script>
+
+</html>
